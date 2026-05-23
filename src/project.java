@@ -112,13 +112,13 @@ class Game {
 
     public void startGame() {
 
-        // Create Rooms
+
         Room entrance = new Room("Dungeon Entrance");
         Room hall = new Room("Dark Hall");
         Room treasure = new Room("Treasure Room");
         Room trap = new Room("Trap Room");
 
-        // Graph Connections
+
         entrance.connectRoom("north", hall);
 
         hall.connectRoom("south", entrance);
@@ -128,10 +128,9 @@ class Game {
         treasure.connectRoom("west", hall);
         trap.connectRoom("east", hall);
 
-        // Create Player
+
         player = new Player("Hero", entrance);
 
-        // HashMap for Items
         items = new HashMap<>();
 
         items.put("key", "Silver Key");
