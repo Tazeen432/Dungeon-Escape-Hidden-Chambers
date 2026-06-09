@@ -43,7 +43,7 @@ class BSTNode {
         this.score = score;
     }
 }
-class bst {
+class BST {
     BSTNode root;
 
     void insert(int score) {
@@ -93,7 +93,7 @@ class Player {
 public class project {
 
     static Scanner sc = new Scanner(System.in);
-    static bst leaderboard = new bst();
+    static BST leaderboard = new BST ();
     public static void main(String[] args) {
         // Skill Tree
         SkillNode rootSkill = new SkillNode("Attack");
@@ -230,11 +230,19 @@ public class project {
                     }
                 }
 
-                case 5 -> {
+                case 5 ->  {
+
+                    if (!player.currentRoom.type.equals("ENEMY")) {
+                        System.out.println("There is no enemy in this room.");
+                        break;
+                    }
+
                     if (!enemyQueue.isEmpty()) {
+
                         Enemy e = enemyQueue.peek();
 
                         while (e.health > 0 && player.health > 0) {
+
                             e.health -= 15;
                             System.out.println("You hit " + e.name);
 
@@ -249,6 +257,7 @@ public class project {
                             player.score += 50;
                             enemyQueue.poll();
                         }
+
                     } else {
                         System.out.println("No enemies left.");
                     }
@@ -267,7 +276,9 @@ public class project {
                     System.out.println("|-- Critical Strike");
                 }
 
-                case 8 -> leaderboard.display();
+                case 8 ->
+                    System.out.println("Current Score: " + player.score);
+
 
                 case 9 -> {
                     leaderboard.insert(player.score);
